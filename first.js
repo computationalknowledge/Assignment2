@@ -1,5 +1,4 @@
-// comments
-// parameters: variables that can Change 
+function add(){
 var startingNumber = 1;
 var currentNumber = startingNumber;
 var endNumber = 100;
@@ -9,4 +8,7 @@ for ( ; currentNumber <= endNumber  ; ){
     currentNumber = currentNumber + 1;
     sum = sum + currentNumber;
 }
-console.log(sum);
+return sum;
+}
+
+console.log(add());
