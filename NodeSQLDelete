@@ -1,0 +1,26 @@
+// delete.js
+
+const sqlite3 = require('sqlite3').verbose();
+
+// open a database connection
+let db = new sqlite3.Database('./CIS.db', (err) => {
+  if (err) {
+    console.error(err.message);
+  }
+});
+
+let studentName = 'Mary2';
+
+db.run(`DELETE FROM students WHERE studentName=?`, studentName, function(err) {
+  if (err) {
+    return console.error(err.message);
+  }
+  console.log(`Row(s) deleted ${this.changes}`);
+});
+
+// close the database connection
+db.close((err) => {
+  if (err) {
+    return console.error(err.message);
+  }
+});
