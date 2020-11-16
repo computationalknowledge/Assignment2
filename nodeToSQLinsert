@@ -1,11 +1,11 @@
-// file2.js insert 
+// insert into sql with Node  
 
 const sqlite3 = require('sqlite3').verbose();
 
   let db = new sqlite3.Database('CIS.db');
 
   // insert one row into the langs table
-  db.run(`INSERT INTO students(studentName) VALUES("Sarah")`,  function(err) {
+  db.run(`INSERT INTO students(pkey, studentid, studentName) VALUES(4, "C13332", "Sarah")`,  function(err) {
     if (err) {
       return console.log(err.message);
     }
