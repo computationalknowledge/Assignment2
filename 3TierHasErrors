@@ -1,0 +1,22 @@
+// get this code working!
+
+// starter template for the 3 Tier MVC Application
+// we don't want the entire server to crash because the db connection failed!
+// we will use try catch to keep us safe from this.
+var http = require("http");
+var sqlite3 = require('sqlite3');
+var file = "CIS.db";
+var db = new sqlite3.Database(file);
+
+http.createServer(function(request, response) {
+response.writeHead(200,  {"Content-Type":  "text/plain"});
+response.write("Welcome to the College Enrollment System!");
+db.all("SELECT * from students", function(err, rows) {
+    rows.forEach(function(row) {
+        response.write(row.studentname, row.studentid);
+    })
+});
+response.end();
+}).listen(8888);
+
+db.close();
